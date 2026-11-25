@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family:
     system-ui,
@@ -11,10 +15,35 @@ body {
     sans-serif;
   background: #f8fafc;
   color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #ccfbf1;
+  color: #134e4a;
+}
+
+/* Dezentes Punktemuster für die Hero-Fläche (nur CSS, keine Bilder). */
+.hero-pattern {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.14) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Ausgewählte Umsatzsteuer-Option hervorheben. */
+.tax-option:has(input:checked) {
+  border-color: #0f766e;
+  background-color: #f0fdfa;
+  box-shadow: 0 0 0 1px #0f766e;
 }
 
 /* Drucken: nur die Rechnung wird gedruckt, nicht Formular oder Inhalte. */
 @media print {
+  html {
+    scroll-behavior: auto;
+  }
   body {
     background: #ffffff;
   }
